@@ -1,0 +1,27 @@
+# Api
+
+# auth
+POST        /api/auth/login                               auth.AnonymousAuthController.login
+POST        /api/auth/signup                              auth.AnonymousAuthController.register
+POST        /api/auth/confirm-account                     auth.AnonymousAuthController.confirmAccount(token:String)
+POST        /api/auth/reset-password-request              auth.AnonymousAuthController.resetPasswordRequest
+POST        /api/auth/reset-password-confirmation         auth.AnonymousAuthController.resetPasswordConfirmation
+POST        /api/auth/logout                              auth.AuthedAuthController.deleteToken
+GET         /api/auth/account                             auth.AuthedAuthController.getAccount
+POST        /api/auth/facebook                            auth.AnonymousAuthController.facebook
+
+
+# invalid calls handler
+GET         /api/*other                                   index.IndexController.invalidApiCall(other: String)
+
+GET         /swagger.json                                 controllers.ApiHelpController.getResources
+
+# assets
+GET         /vassets/*file                                controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file                                 controllers.Assets.at(path="/public", file)
+GET         /templates/*file                              controllers.Assets.at(path="/public/templates", file)
+GET         /images/*file                                 controllers.Assets.at(path="/public/images", file)
+
+# index
+GET         /                                             index.IndexController.getIndex
+GET         /*other                                       index.IndexController.other(other: String)
